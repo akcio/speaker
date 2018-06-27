@@ -7,8 +7,11 @@
 
 from SpeakerModule import Speaker
 from whetherModule import Whether
+from vk_module     import VKModule
 
 if __name__ == "__main__":
     s = Speaker()
     w = Whether()
+    vk = VKModule('TOKEN', 0, s)
+    vk.getNewMessage()
     s.AddToQueue(w.GetStringForSpeach())

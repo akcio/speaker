@@ -62,13 +62,13 @@ class Whether:
         
         conditions = self.lastWhetherData['weather'][0]['description'].encode('utf8')
         return "Сейчас на улице {now} градусов, {conditions}. Минимальная {minimum}. Максимальная {maximum}".format(now=nowTemp,
-            conditions = conditions, minimum = minTemperature, maximum =  maxTemperature)
+            conditions = conditions.decode("utf-8"), minimum = minTemperature, maximum =  maxTemperature)
         
 
 
 
-w = Whether()
-a = w.GetNowWheather()
-#data = a['weather'][0]['description']
-#print data.encode('utf8')
-print w.GetStringForSpeach()
+# w = Whether()
+# a = w.GetNowWheather()
+# #data = a['weather'][0]['description']
+# #print data.encode('utf8')
+# print(w.GetStringForSpeach())
