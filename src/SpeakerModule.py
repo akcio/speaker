@@ -16,10 +16,18 @@ class Speaker():
         self.messagePool = []
         self._lock = Lock()
         self.TimerSpeach()
+        self.__timer = None
+
+    def __del__(self):
+        self.__timer.cancel()
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.__timer.cancel()
+
     
     def TimerSpeach(self):
         import threading
-        threading.Timer(2.0, self.TimerSpeach).start()
+        # self.__timer = threading.Timer(2.0, self.TimerSpeach).start()
         if (self.messagePool != []):
             self.messagePool.reverse()
             self.SpeakTest(self.messagePool.pop())
